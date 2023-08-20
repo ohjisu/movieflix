@@ -20,6 +20,21 @@ class MovieApp extends StatelessWidget {
             fontSize: 20,
             color: Colors.black,
           ),
+          displayMedium: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 22,
+            color: Colors.white,
+          ),
+          displayLarge: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 25,
+            color: Colors.white,
+          ),
+          bodyMedium: TextStyle(
+            fontWeight: FontWeight.w300,
+            fontSize: 15,
+            color: Colors.white,
+          ),
         ),
       ),
       home: HomeScreen(),

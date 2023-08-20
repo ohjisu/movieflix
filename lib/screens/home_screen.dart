@@ -3,6 +3,7 @@ import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
 import 'package:movieflix/models/movie_model.dart';
 import 'package:movieflix/services/api_service.dart';
+import 'package:movieflix/widgets/movie_widget.dart';
 
 class HomeScreen extends StatelessWidget {
   HomeScreen({super.key});
@@ -22,7 +23,7 @@ class HomeScreen extends StatelessWidget {
       ),
       */
       body: Row(
-        children: [
+        children: <Widget>[
           Expanded(
             child: FutureBuilder(
               future: movies,
@@ -70,15 +71,11 @@ class HomeScreen extends StatelessWidget {
       itemBuilder: (context, index) {
         var movie = snapshot.data![index];
         // return Text(movie.title);
-        return Container(
-          width: 350,
-          clipBehavior: Clip.hardEdge,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(50),
-          ),
-          child: Image.network(
-            "https://image.tmdb.org/t/p/w400${movie.poster_path}",
-          ),
+        return Movie(
+          path: movie.poster_path,
+          id: movie.id,
+          title: movie.title,
+          overview: movie.overview,
         );
       },
       separatorBuilder: (context, index) => const SizedBox(

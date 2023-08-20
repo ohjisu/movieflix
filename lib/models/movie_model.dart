@@ -31,5 +31,7 @@ class MovieModel {
   MovieModel.fromJson(Map<String, dynamic> json)
       : title = json['title'],
         poster_path = json['poster_path'],
-        id = json['id'];
+        id = json['id'],
+        overview = json['overview'],
+        vote_average = json['vote_average'];
 }
