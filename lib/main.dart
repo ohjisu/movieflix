@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:movieflix/screens/home_screen.dart';
 import 'package:movieflix/services/api_service.dart';
@@ -34,6 +36,12 @@ class MovieApp extends StatelessWidget {
             fontWeight: FontWeight.w300,
             fontSize: 15,
             color: Colors.white,
+          ),
+          labelSmall: TextStyle(
+            fontWeight: FontWeight.w700,
+            fontFeatures: [FontFeature.tabularFigures()],
+            fontSize: 14,
+            color: Colors.black,
           ),
         ),
       ),

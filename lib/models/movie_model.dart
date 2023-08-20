@@ -20,7 +20,8 @@ class MovieModel {
   String title = "";
   double popularity = 0, vote_average = 0;
   List<int> genre_ids = [];
-  int id, vote_count = 0;
+  int id;
+  double vote_count = 0;
 
   MovieModel({
     required this.title,
@@ -32,6 +33,5 @@ class MovieModel {
       : title = json['title'],
         poster_path = json['poster_path'],
         id = json['id'],
-        overview = json['overview'],
-        vote_average = json['vote_average'];
+        overview = json['overview'];
 }

@@ -1,16 +1,20 @@
 import 'package:flutter/material.dart';
+import 'package:movieflix/models/movie_detail_model.dart';
+import 'package:movieflix/services/api_service.dart';
 
 class DetailScreen extends StatelessWidget {
   final String path, title, overview;
   final int id;
 
-  const DetailScreen({
+  DetailScreen({
     super.key,
     required this.path,
     required this.id,
     required this.title,
     required this.overview,
   });
+
+  late final Future<MovieDetailModel> detailInfo = ApiService.getDetails(id);
 
   @override
   Widget build(BuildContext context) {
@@ -27,7 +31,16 @@ class DetailScreen extends StatelessWidget {
         children: [
           Flexible(
             flex: 2,
-            child: Container(),
+            child: Hero(
+              tag: id,
+              child: Container(
+                child: Image.network(
+                  "https://image.tmdb.org/t/p/w400$path",
+                  height: 250,
+                  fit: BoxFit.none,
+                ),
+              ),
+            ),
           ),
           Flexible(
             flex: 3,
@@ -44,7 +57,17 @@ class DetailScreen extends StatelessWidget {
                       style: Theme.of(context).textTheme.displayLarge,
                     ),
                     const Text("별점"),
-                    const Text("상영시간 | 장르"),
+                    FutureBuilder(
+                      future: detailInfo,
+                      builder: (context, snapshot) {
+                        if (snapshot.hasData) {
+                          return Text(
+                              "${(snapshot.data!.runtime / 60).floor()}h ${snapshot.data!.runtime % 60}min");
+                        }
+                        print(snapshot);
+                        return Text("상영시간 | 장르");
+                      },
+                    ),
                     const SizedBox(height: 20),
                     Text(
                       "Storyline",
