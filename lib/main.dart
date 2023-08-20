@@ -12,7 +12,16 @@ class MovieApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(
+    return MaterialApp(
+      theme: ThemeData(
+        textTheme: const TextTheme(
+          displaySmall: TextStyle(
+            fontWeight: FontWeight.w800,
+            fontSize: 20,
+            color: Colors.black,
+          ),
+        ),
+      ),
       home: HomeScreen(),
     );
   }
