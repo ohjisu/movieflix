@@ -3,7 +3,6 @@ import 'package:movieflix/screens/home_screen.dart';
 import 'package:movieflix/services/api_service.dart';
 
 void main() {
-  ApiService().getPopularMovies();
   runApp(const MovieApp());
 }
 

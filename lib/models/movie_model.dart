@@ -27,4 +27,9 @@ class MovieModel {
     required this.poster_path,
     required this.id,
   });
+
+  MovieModel.fromJson(Map<String, dynamic> json)
+      : title = json['title'],
+        poster_path = json['poster_path'],
+        id = json['id'];
 }
